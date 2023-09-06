@@ -1,0 +1,153 @@
+@keyframes animatedBackground {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+
+body,
+html {
+    height: 100%;
+    font-family: 'Barlow Condensed', sans-serif;
+    /* font-family: 'VT323', monospace; */
+    transition: background-color 0.5s;
+    /* background-color: #202124; */
+    color: #E8EAED;
+    background: linear-gradient(45deg,#000000, #FF7D1E 1%, #4b4c50, #4b4c50);
+    background-size: 200% 700%;
+    animation: animatedBackground 15s ease infinite backwards alternate;
+}
+
+
+#container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    height: 100%;
+    /* Add the following to keep it at the center of the viewport */
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#title {
+    font-size: 60px;
+    font-weight: bold;
+    color: #e5b80c;
+}
+
+#search-box {
+    position: relative;
+    width: 150%;
+    box-shadow: 0px -5px 30px 0px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+}
+
+#query {
+    width: 100%;
+    padding: 10px 40px 10px 50px;
+    font-size: 20px;
+    border: none;
+    outline: none;
+    border-radius: 20px;
+    /* Rounded on all sides initially */
+}
+
+body #query {
+    background-color: #1c1c1d;
+    color: #E8EAED;
+}
+
+.input-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+#light-bulb-icon {
+    position: absolute;
+    z-index: 2;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 20px;
+    color: #e5b80c;
+}
+
+.suggestion-item {
+    padding: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+body .suggestion-item:hover {
+    background-color: #484848;
+    /* Darker gray for dark theme hover */
+}
+
+#suggestions {
+    position: absolute;
+    /* Make it absolute so that it overlays on top of the content below */
+    top: 100%;
+    /* Position it right below the search box */
+    width: 100%;
+    text-align: left;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-out;
+    padding-left: 50px;
+    /* Aligned with the input field text */
+    border-radius: 0 0 20px 20px;
+    /* Rounded only at the bottom initially */
+    font-size: 20px;
+    box-shadow: 0 5px 30px 0 rgba(0, 0, 0, 0.2);
+    overflow-y: auto;
+}
+
+body #suggestions {
+    background-color: #1c1c1d;
+}
+
+#search-box.show-suggestions #query {
+    border-radius: 20px 20px 0 0;
+}
+
+#search-box.show-suggestions #suggestions {
+    max-height: 200px;
+    border-radius: 0 0 20px 20px;
+}
+
+#theme-toggle {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+#clear-icon {
+    position: absolute;
+    z-index: 2;
+    right: 15px;
+    /* position it 15px from the right */
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 20px;
+    /* same size as the bulb icon */
+    cursor: pointer;
+    /* show hand cursor when hovering over the icon */
+}
+
+.suffix {
+    text-decoration-line: underline;
+    font-weight: bold;
+    /* This makes the text bold */
+}
